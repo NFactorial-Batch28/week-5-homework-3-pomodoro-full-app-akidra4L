@@ -23,6 +23,11 @@ struct TabBarItem {
     ]
 }
 
+struct AppProgress {
+    var totalSeconds = 300
+    var remainingSeconds = 60
+}
+
 class ViewController: UITabBarController {
 
     override func viewDidLoad() {

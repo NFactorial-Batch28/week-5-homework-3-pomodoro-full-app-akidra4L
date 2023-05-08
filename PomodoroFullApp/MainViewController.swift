@@ -9,6 +9,10 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var appProgress: AppProgress = {
+        return AppProgress()
+    } ()
+    
     private var imageView: UIImageView = {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -39,11 +43,17 @@ class MainViewController: UIViewController {
         
         setBackground()
         setConstraints()
-        progressCircleView.setProgress(0.7, animated: true)
+        setButtonsActions()
+        startTimerProgress()
     }
     
     private func setBackground() {
         imageView.frame = view.bounds
+    }
+    
+    private func startTimerProgress() {
+        progressCircleView.setProgress(1, animated: true)
+        progressCircleView.startTimer()
     }
     
     private func setConstraints() {
@@ -56,5 +66,18 @@ class MainViewController: UIViewController {
         progressCircleView.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, left: view.leftAnchor, paddingTop: 50, paddingRight: 70, paddingLeft: 70)
         
         strokeCircleView.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, left: view.leftAnchor, paddingTop: 50, paddingRight: 70, paddingLeft: 70)
+    }
+    
+    private func setButtonsActions() {
+        stopButton.addTarget(self, action: #selector(pauseTimer), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(resumeTimer), for: .touchUpInside)
+    }
+    
+    @objc private func pauseTimer() {
+        progressCircleView.pauseTimer()
+    }
+    
+    @objc private func resumeTimer() {
+        progressCircleView.resumeTimer()
     }
 }

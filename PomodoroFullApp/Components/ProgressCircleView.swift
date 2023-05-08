@@ -9,12 +9,20 @@ import UIKit
 
 class ProgressCircleView: UIView {
     
+    private var timer: Timer?
     private let progressLayer = CAShapeLayer()
     private let textLayer = CATextLayer()
     private var progress: CGFloat = 0 {
         didSet {
             progressLayer.strokeEnd = progress
-            textLayer.string = "\(Int(progress * 100))%"
+        }
+    }
+    
+    private var isTimerRunning = false
+    private var remainingSeconds: Int = 300 {
+        didSet {
+            setProgress(CGFloat(remainingSeconds) / 300, animated: true)
+            updateText()
         }
     }
     
@@ -30,7 +38,7 @@ class ProgressCircleView: UIView {
     
     private func setupLayers() {
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
-                                      radius: bounds.width / 2 - 10,
+                                      radius: bounds.width / 2,
                                       startAngle: -.pi / 2,
                                       endAngle: .pi * 2 - .pi / 2,
                                       clockwise: true)
@@ -44,12 +52,32 @@ class ProgressCircleView: UIView {
         
         textLayer.fontSize = 24
         textLayer.alignmentMode = .center
-        textLayer.foregroundColor = UIColor.black.cgColor
-        textLayer.frame = CGRect(x: 0, y: bounds.midY - 15, width: bounds.width, height: 30)
+        textLayer.foregroundColor = UIColor.white.cgColor
+        textLayer.fontSize = 44
+        textLayer.frame = CGRect(x: 0, y: bounds.midY - 25, width: bounds.width, height: 56)
+        textLayer.string = String(format: "%02d:%02d", remainingSeconds / 60, remainingSeconds % 60)
         layer.addSublayer(textLayer)
     }
     
-    func setProgress(_ progress: CGFloat, animated: Bool) {
+    public func startTimer() {
+        stopTimer()
+        isTimerRunning = true
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            if self.remainingSeconds > 0 {
+                self.remainingSeconds -= 1
+            } else {
+                self.stopTimer()
+            }
+        })
+    }
+    
+    public func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    public func setProgress(_ progress: CGFloat, animated: Bool) {
         if animated {
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.duration = 0.5
@@ -58,5 +86,19 @@ class ProgressCircleView: UIView {
             progressLayer.add(animation, forKey: "strokeEndAnimation")
         }
         self.progress = progress
+    }
+    
+    private func updateText() {
+        textLayer.string = String(format: "%02d:%02d", remainingSeconds / 60, remainingSeconds % 60)
+    }
+    
+    public func pauseTimer() {
+        isTimerRunning = false
+        timer?.invalidate()
+    }
+    
+    public func resumeTimer() {
+        isTimerRunning = true
+        startTimer()
     }
 }

@@ -23,7 +23,7 @@ class CircleStrokeView: UIView {
     
     private func setupLayers() {
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
-                                      radius: bounds.width / 2 - 10,
+                                      radius: bounds.width / 2,
                                       startAngle: -.pi / 2,
                                       endAngle: .pi * 2 - .pi / 2,
                                       clockwise: true)
