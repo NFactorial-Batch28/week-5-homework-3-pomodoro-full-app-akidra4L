@@ -11,6 +11,11 @@
 		1546C84F2A08CC3000059F75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C84E2A08CC3000059F75 /* ViewController.swift */; };
 		1546C8542A08CC3100059F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1546C8532A08CC3100059F75 /* Assets.xcassets */; };
 		1546C8572A08CC3100059F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1546C8552A08CC3100059F75 /* LaunchScreen.storyboard */; };
+		1546C85F2A08CD8000059F75 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C85E2A08CD8000059F75 /* HistoryViewController.swift */; };
+		1546C8612A08CD9900059F75 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8602A08CD9900059F75 /* SettingsViewController.swift */; };
+		1546C8642A08CDD400059F75 /* CustomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8632A08CDD400059F75 /* CustomActionButton.swift */; };
+		1546C8662A08CE0500059F75 /* CustomConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8652A08CE0500059F75 /* CustomConstraints.swift */; };
+		1546C8682A08CE2B00059F75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8672A08CE2B00059F75 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		1546C8532A08CC3100059F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1546C8562A08CC3100059F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1546C8582A08CC3100059F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1546C85E2A08CD8000059F75 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		1546C8602A08CD9900059F75 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1546C8632A08CDD400059F75 /* CustomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionButton.swift; sourceTree = "<group>"; };
+		1546C8652A08CE0500059F75 /* CustomConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConstraints.swift; sourceTree = "<group>"; };
+		1546C8672A08CE2B00059F75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +62,26 @@
 		1546C8492A08CC2F00059F75 /* PomodoroFullApp */ = {
 			isa = PBXGroup;
 			children = (
+				1546C8622A08CDB600059F75 /* Components */,
 				1546C84A2A08CC2F00059F75 /* AppDelegate.swift */,
 				1546C84E2A08CC3000059F75 /* ViewController.swift */,
 				1546C8532A08CC3100059F75 /* Assets.xcassets */,
 				1546C8552A08CC3100059F75 /* LaunchScreen.storyboard */,
 				1546C8582A08CC3100059F75 /* Info.plist */,
+				1546C85E2A08CD8000059F75 /* HistoryViewController.swift */,
+				1546C8602A08CD9900059F75 /* SettingsViewController.swift */,
+				1546C8652A08CE0500059F75 /* CustomConstraints.swift */,
+				1546C8672A08CE2B00059F75 /* MainViewController.swift */,
 			);
 			path = PomodoroFullApp;
+			sourceTree = "<group>";
+		};
+		1546C8622A08CDB600059F75 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1546C8632A08CDD400059F75 /* CustomActionButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1546C8682A08CE2B00059F75 /* MainViewController.swift in Sources */,
+				1546C85F2A08CD8000059F75 /* HistoryViewController.swift in Sources */,
+				1546C8662A08CE0500059F75 /* CustomConstraints.swift in Sources */,
 				1546C84F2A08CC3000059F75 /* ViewController.swift in Sources */,
 				1546C84B2A08CC2F00059F75 /* AppDelegate.swift in Sources */,
+				1546C8612A08CD9900059F75 /* SettingsViewController.swift in Sources */,
+				1546C8642A08CDD400059F75 /* CustomActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
