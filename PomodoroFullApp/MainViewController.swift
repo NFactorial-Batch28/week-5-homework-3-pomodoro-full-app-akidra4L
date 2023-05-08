@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         return button
     } ()
     
-    private var playButton = CustomActionButton(icon: "play")
+    private var playAndStopButton = CustomActionButton(icon: "pause")
     private var stopButton = CustomActionButton(icon: "stop")
     private let progressCircleView = ProgressCircleView(frame: CGRect(x: 0, y: 0, width: 248, height: 248))
     private let strokeCircleView = CircleStrokeView(frame: CGRect(x: 0, y: 0, width: 248, height: 248))
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [imageView, focusButtonView, playButton, stopButton, progressCircleView, strokeCircleView].forEach { self.view.addSubview($0) }
+        [imageView, focusButtonView, playAndStopButton, stopButton, progressCircleView, strokeCircleView].forEach { self.view.addSubview($0) }
         self.view.sendSubviewToBack(imageView)
         
         setBackground()
@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
     private func setConstraints() {
         focusButtonView.anchor(top: view.topAnchor, right: view.rightAnchor, left: view.leftAnchor, paddingTop: 164, paddingRight: 84, paddingLeft: 84, width: 170, height: 36)
         
-        playButton.anchor(top: focusButtonView.bottomAnchor, left: view.leftAnchor, paddingTop: 360, paddingLeft: 80, width: 56, height: 56)
+        playAndStopButton.anchor(top: focusButtonView.bottomAnchor, left: view.leftAnchor, paddingTop: 360, paddingLeft: 80, width: 56, height: 56)
         
         stopButton.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, paddingTop: 360, paddingRight: 80, width: 56, height: 56)
         
@@ -69,15 +69,31 @@ class MainViewController: UIViewController {
     }
     
     private func setButtonsActions() {
-        stopButton.addTarget(self, action: #selector(pauseTimer), for: .touchUpInside)
-        playButton.addTarget(self, action: #selector(resumeTimer), for: .touchUpInside)
+        focusButtonView.addTarget(self, action: #selector(openBottomSheet), for: .touchUpInside)
+        playAndStopButton.addTarget(self, action: #selector(pauseTimer), for: .touchUpInside)
+        stopButton.addTarget(self, action: #selector(resetAll), for: .touchUpInside)
     }
     
     @objc private func pauseTimer() {
         progressCircleView.pauseTimer()
+        updateButtonImage()
     }
     
-    @objc private func resumeTimer() {
-        progressCircleView.resumeTimer()
+    @objc private func resetAll() {
+        progressCircleView.resetAll()
+    }
+    
+    private func updateButtonImage() {
+        if progressCircleView.isTimerRunning {
+            let image = UIImage(systemName: "pause")
+            playAndStopButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(systemName: "play")
+            playAndStopButton.setImage(image, for: .normal)
+        }
+    }
+    
+    @objc private func openBottomSheet() {
+        self.navigationController?.present(BottomSheetViewController(), animated: true)
     }
 }

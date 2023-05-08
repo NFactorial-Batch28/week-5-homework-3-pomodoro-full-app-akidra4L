@@ -18,7 +18,7 @@ class ProgressCircleView: UIView {
         }
     }
     
-    private var isTimerRunning = false
+    public var isTimerRunning = false
     private var remainingSeconds: Int = 300 {
         didSet {
             setProgress(CGFloat(remainingSeconds) / 300, animated: true)
@@ -93,12 +93,23 @@ class ProgressCircleView: UIView {
     }
     
     public func pauseTimer() {
-        isTimerRunning = false
-        timer?.invalidate()
+        if isTimerRunning {
+            isTimerRunning = false
+            timer?.invalidate()
+        } else {
+            isTimerRunning = true
+            startTimer()
+        }
     }
     
     public func resumeTimer() {
         isTimerRunning = true
         startTimer()
+    }
+    
+    public func resetAll() {
+        remainingSeconds = 300
+        setProgress(0, animated: false)
+        updateText()
     }
 }
