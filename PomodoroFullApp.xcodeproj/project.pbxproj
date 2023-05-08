@@ -16,6 +16,8 @@
 		1546C8642A08CDD400059F75 /* CustomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8632A08CDD400059F75 /* CustomActionButton.swift */; };
 		1546C8662A08CE0500059F75 /* CustomConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8652A08CE0500059F75 /* CustomConstraints.swift */; };
 		1546C8682A08CE2B00059F75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8672A08CE2B00059F75 /* MainViewController.swift */; };
+		1546C86A2A08CF9000059F75 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C8692A08CF9000059F75 /* ProgressCircleView.swift */; };
+		1546C86C2A08D69000059F75 /* CircleStrokeVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C86B2A08D69000059F75 /* CircleStrokeVIew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		1546C8632A08CDD400059F75 /* CustomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionButton.swift; sourceTree = "<group>"; };
 		1546C8652A08CE0500059F75 /* CustomConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConstraints.swift; sourceTree = "<group>"; };
 		1546C8672A08CE2B00059F75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1546C8692A08CF9000059F75 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
+		1546C86B2A08D69000059F75 /* CircleStrokeVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleStrokeVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				1546C8632A08CDD400059F75 /* CustomActionButton.swift */,
+				1546C8692A08CF9000059F75 /* ProgressCircleView.swift */,
+				1546C86B2A08D69000059F75 /* CircleStrokeVIew.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -155,10 +161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1546C8682A08CE2B00059F75 /* MainViewController.swift in Sources */,
+				1546C86C2A08D69000059F75 /* CircleStrokeVIew.swift in Sources */,
 				1546C85F2A08CD8000059F75 /* HistoryViewController.swift in Sources */,
 				1546C8662A08CE0500059F75 /* CustomConstraints.swift in Sources */,
 				1546C84F2A08CC3000059F75 /* ViewController.swift in Sources */,
 				1546C84B2A08CC2F00059F75 /* AppDelegate.swift in Sources */,
+				1546C86A2A08CF9000059F75 /* ProgressCircleView.swift in Sources */,
 				1546C8612A08CD9900059F75 /* SettingsViewController.swift in Sources */,
 				1546C8642A08CDD400059F75 /* CustomActionButton.swift in Sources */,
 			);

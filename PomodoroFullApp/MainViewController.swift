@@ -19,22 +19,27 @@ class MainViewController: UIViewController {
     private var focusButtonView: UIButton = {
         var button = UIButton()
         button.backgroundColor = .white.withAlphaComponent(0.3)
+        button.setImage(UIImage(systemName: "pencil", withConfiguration: UIImage.SymbolConfiguration(weight: .black)), for: .normal)
         button.setTitle("Focus Category", for: .normal)
+        button.tintColor = .white
         button.layer.cornerRadius = 20
         return button
     } ()
     
     private var playButton = CustomActionButton(icon: "play")
     private var stopButton = CustomActionButton(icon: "stop")
+    private let progressCircleView = ProgressCircleView(frame: CGRect(x: 0, y: 0, width: 248, height: 248))
+    private let strokeCircleView = CircleStrokeView(frame: CGRect(x: 0, y: 0, width: 248, height: 248))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [imageView, focusButtonView, playButton, stopButton].forEach { self.view.addSubview($0) }
+        [imageView, focusButtonView, playButton, stopButton, progressCircleView, strokeCircleView].forEach { self.view.addSubview($0) }
         self.view.sendSubviewToBack(imageView)
         
         setBackground()
         setConstraints()
+        progressCircleView.setProgress(0.7, animated: true)
     }
     
     private func setBackground() {
@@ -47,5 +52,9 @@ class MainViewController: UIViewController {
         playButton.anchor(top: focusButtonView.bottomAnchor, left: view.leftAnchor, paddingTop: 360, paddingLeft: 80, width: 56, height: 56)
         
         stopButton.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, paddingTop: 360, paddingRight: 80, width: 56, height: 56)
+        
+        progressCircleView.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, left: view.leftAnchor, paddingTop: 50, paddingRight: 70, paddingLeft: 70)
+        
+        strokeCircleView.anchor(top: focusButtonView.bottomAnchor, right: view.rightAnchor, left: view.leftAnchor, paddingTop: 50, paddingRight: 70, paddingLeft: 70)
     }
 }
